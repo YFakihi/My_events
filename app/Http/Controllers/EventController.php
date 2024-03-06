@@ -11,7 +11,8 @@ class EventController extends Controller
     public function index()
     {
         $categories = Categorie::all();
-        $events = Event::all();
+        // $events = Event::all();
+        $events = auth()->user()->events;
 
         return view('events.index', compact('events', 'categories'));
     }
@@ -19,6 +20,11 @@ class EventController extends Controller
     public function show($id)
     {
         $event = Event::find($id);
+    
+        if (!$event) {
+            abort(404); 
+        }
+    
         return view('events.singlepage', ['event' => $event]);
     }
 
@@ -29,7 +35,6 @@ class EventController extends Controller
         return view('welcome', compact('events'));
     }
 
-
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -39,10 +44,17 @@ class EventController extends Controller
             'date' => 'required|date',
             'capacity' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
-        ]);
-
+            'available_place' => 'nullable|integer',
+            'validation_method' => 'required|in:manual,automatic',
+                ]);
+        $validatedData['user_id'] = auth()->id();
+    
         Event::create($validatedData);
-
+    
         return redirect()->route('events.index')->with('success', 'Event created successfully');
     }
+    
+    
+
+
 }

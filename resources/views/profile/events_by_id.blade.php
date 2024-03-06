@@ -71,7 +71,7 @@
                                     <!-- Category field -->
                                     <div>
                                         <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                                        <select id="category" name="category_id" class="bg-gray-0 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        <select id="category" name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                             <option selected disabled>Select category</option>
                                             @foreach($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->name_cat }}</option>
@@ -82,19 +82,6 @@
                                         <label for="capacity" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Capacity</label>
                                         <input type="number" name="capacity" id="capacity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Event capacity" required="">
                                     </div>
-
-
-                                    <div>
-                                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Validation Method</label>
-                                        <select id="category" name="category_id" class="bg-gray-0 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                            <option value="manual">Manual</option>
-                                            <option value="automatic">Automatic</option>
-                                        </select>
-                                    </div>
-
-
-
-                                    
                                     <!-- Add more fields as needed -->
                                 </div>
                                 <button type="submit" class="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
@@ -142,12 +129,8 @@
                                 <th scope="col" class="px-4 py-3">description</th>
                                 <th scope="col" class="px-4 py-3">adress</th>
                                 <th scope="col" class="px-4 py-3">date</th>
-                                <th for="available_place">Available Places</th>
                                 <th scope="col" class="px-4 py-3">capacity</th>
                                 <th scope="col" class="px-4 py-3">categories</th>
-                                <th scope="col" class="px-4 py-3">validation_method</th>
-                                
-
                                 <th scope="col" class="px-4 py-3">
                                     <span class="sr-only">Actions</span>
                                 </th>
@@ -160,8 +143,6 @@
                                     <td class="px-4 py-3">{{ $event->description }}</td>
                                     <td class="px-4 py-3">{{ $event->address }}</td>
                                     <td class="px-4 py-3">{{ $event->date}}</td>
-                                    <td class="px-4 py-3">{{ $event->available_place }}</td>
-
                                     <td class="px-4 py-3">{{ $event->capacity }}</td>
                                     <td class="px-4 py-3">
                                         @if($event->category)
@@ -170,11 +151,6 @@
                                             No Category
                                         @endif
                                     </td>
-                                    <td class="px-4 py-3">
-                                        {{ $event->validation_method }}
-                                    </td>
-                                    
-
                                                               <td class="px-4 py-3 flex items-center justify-end">
                                         <!-- Add/Edit/Delete buttons -->
                                         <button id="benq-ex2710q-dropdown-button" data-dropdown-toggle="benq-ex2710q-dropdown" class="inline-flex items-center text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-700 p-1.5 dark:hover-bg-gray-800 text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\event_by_idController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\singlepageController;
@@ -24,8 +25,18 @@ Route::get('/', function () {
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return view('layouts/app');
+})->name('dashboard');
+
+
+Route::get('/dashboard_orginased', function () {
+    return view('dashboard_orginased');
+})->name('dashboard_orginased');
+// middleware(['auth', 'verified'])->
+
+Route::get('/profile/events_by_id', [event_by_idController::class, 'index'])->name('events_by_id.index');
+
+
 
 
 // Route::get('/events', function () {
