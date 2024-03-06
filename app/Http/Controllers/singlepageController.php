@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categorie;
+use App\Models\Event;
 use Illuminate\Http\Request;
 
-class CategorieController extends Controller
+class singlepageController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function getid(Request $request)
     {
-        $categories = Categorie::all();
-        return view('categories.index',compact('categories'));
+        $event = Event::find($request);
+        return redirect()->back()->with('success', 'Purchase successful');
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -29,11 +28,7 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        $valiadtedata = $request->validate([
-            'name_cat'=>'required|string'
-        ]);
-        Categorie::create($valiadtedata);
-        return redirect()->route('events.index')->with('sucess');
+        //
     }
 
     /**

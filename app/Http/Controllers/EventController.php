@@ -16,12 +16,19 @@ class EventController extends Controller
         return view('events.index', compact('events', 'categories'));
     }
 
+    public function show($id)
+    {
+        $event = Event::find($id);
+        return view('events.singlepage', ['event' => $event]);
+    }
+
     public function home()
     {
         $events = Event::all();
 
         return view('welcome', compact('events'));
     }
+
 
     public function store(Request $request)
     {

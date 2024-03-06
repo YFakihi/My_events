@@ -86,19 +86,25 @@
         </div>
         </div>
       </nav>
-      
-      <div class="flex font-sans">
-        <div class="flex-none w-56 relative">
-          <img src="{{asset('images.png')}}" alt="" class="absolute inset-0 w-full h-full object-cover rounded-lg" loading="lazy" />
+     
+    <div class="flex font-sans">
+       
+        <h1 class="flex-auto font-medium text-slate-900">
+            {{ $event->title }}
+        </h1>
+        <div class="w-full flex-none mt-2 order-1 text-3xl font-bold text-violet-600">
+            {{ $event->description }}
         </div>
-        <form class="flex-auto p-6">
-          <div class="flex flex-wrap">
-            <h1 class="flex-auto font-medium text-slate-900">
-              title
-            </h1>
-            <div class="w-full flex-none mt-2 order-1 text-3xl font-bold text-violet-600">
-              $39.00
-            </div>
+        <div class="w-full flex-none mt-2 order-1 text-3xl font-bold text-violet-600">
+            {{ $event->address }}
+        </div>
+        <div class="w-full flex-none mt-2 order-1 text-3xl font-bold text-violet-600">
+            {{ $event->date }}
+        </div>
+        <div class="w-full flex-none mt-2 order-1 text-3xl font-bold text-violet-600">
+            {{ $event->capacity }}
+        </div>
+            
             <div class="text-sm font-medium text-slate-400">
               In stock
             </div>

@@ -9,6 +9,9 @@ class Categorie extends Model
 {
     use HasFactory;
 
+    protected $table = 'categories';
+    protected $fillable = ['name_cat'];
+
     public function event(){
         return $this->belongsToMany(Event::class);
     }
