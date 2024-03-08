@@ -14,7 +14,8 @@ class event_by_idController extends Controller
     public function index()
     {
         $categories = Categorie::all();
-        $events = Event::all();
+        $events = auth()->user()->events;
+        // $events = Event::all();
         return view('profile.events_by_id', compact('events','categories'));
     }
 
@@ -31,7 +32,20 @@ class event_by_idController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedata = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'address' => 'required|string|max:255',
+            'date' => 'required|date',
+            'capacity' => 'required|integer',
+            'category_id' => 'required|exists:categories,id',
+            'available_place' => 'nullable|integer',
+            'validation_method' => 'required|in:manual,automatic',
+        ]);
+        $validatedata['user_id'] = auth()->id();
+         Event::create($validatedata);
+         return redirect()->back()->with('success', 'Event ');
+
     }
 
     /**

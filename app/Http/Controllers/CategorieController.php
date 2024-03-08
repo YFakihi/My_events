@@ -13,7 +13,7 @@ class CategorieController extends Controller
     public function index()
     {
         $categories = Categorie::all();
-        return view('categories.index',compact('categories'));
+        return view('categories.index', compact('categories'));
     }
 
     /**
@@ -30,7 +30,7 @@ class CategorieController extends Controller
     public function store(Request $request)
     {
         $valiadtedata = $request->validate([
-            'name_cat'=>'required|string'
+            'name_cat'=>'required|string|max:30'
         ]);
         Categorie::create($valiadtedata);
         return redirect()->route('events.index')->with('sucess');

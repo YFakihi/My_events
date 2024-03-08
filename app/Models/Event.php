@@ -11,12 +11,12 @@ class Event extends Model
 
     protected $table = 'events';
 
-    protected $fillable = ['title', 'description', 'address', 'date', 'capacity', 'category_id', 'available_place', 'validation_method', 'user_id'];
+    protected $fillable = ['title', 'description', 'address', 'date', 'capacity', 'category_id', 'available_place', 'validation_method', 'price', 'status', 'user_id'];
 
 
     // protected $dates = ['date']; 
 
-    public function categorie(){
+    public function category(){
         return $this->belongsTo(Categorie::class);
     }
 

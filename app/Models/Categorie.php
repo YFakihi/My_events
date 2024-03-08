@@ -12,7 +12,7 @@ class Categorie extends Model
     protected $table = 'categories';
     protected $fillable = ['name_cat'];
 
-    public function event(){
-        return $this->belongsToMany(Event::class);
+    public function events(){
+        return $this->hasMany(Event::class);
     }
 }
